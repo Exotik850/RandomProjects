@@ -23,9 +23,9 @@ def vector_add(*vectors):
     v1, v2, v3 = [], [], []
     end1, end2, end3 = 0, 0, 0
     for i in vectors:
-        v1.append(list(i)[0])
-        v2.append(list(i)[1])
-        v3.append(list(i)[2])
+        v1.append(i[0])
+        v2.append(i[1])
+        v3.append(i[2])
     for val1, val2, val3 in zip(v1, v2, v3):
         end1 += val1
         end2 += val2
