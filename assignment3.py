@@ -33,15 +33,15 @@ def vector_add(*vectors):
     return [end1, end2, end3]
 
 def find_line(a, b):
-    slope = (b[1] - a[1]) / (b[0] - a[0])
-    slope = round(slope, 2)
-    y_int = a[1] - slope * a[0]
-    y_int = round(y_int, 2)
+    slope = round((b[1] - a[1]) / (b[0] - a[0]), 2)
+    y_int = round(a[1] - slope * a[0], 2)
     return "y = " + str(slope) + "x + " + str(y_int)
 
 def barbell_centroid(left, right):
     if left > 10 or right > 10:
         return "Error"
-    x_left, x_right = 0, 0
-    for i in range(1, left + 1):
+    x_left = (-(left / 2) - 25) * 45
+    x_right = ((right / 2) + 25) * 45
+    return (x_left + x_right) / ((left + right) * 45)
+print(barbell_centroid(10, 1))
         
