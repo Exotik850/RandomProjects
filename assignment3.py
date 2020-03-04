@@ -1,5 +1,5 @@
 import math
-import operator
+
 pi = math.pi
 
 def my_atan(y, x):
@@ -40,8 +40,12 @@ def find_line(a, b):
 def barbell_centroid(left, right):
     if left > 10 or right > 10:
         return "Error"
-    x_left = (-(left / 2) - 25) * 45
-    x_right = ((right / 2) + 25) * 45
-    return (x_left + x_right) / ((left + right) * 45)
-print(barbell_centroid(10, 1))
+    x_left, x_right = 0, 0
+    for i in range(0, left):
+        x_left += 45 * ((-2 * i - 1) - 25)
+    for i in range(0, right):
+        x_right += 45 * ((2 * i + 1) + 25)
+    return ((x_left + x_right) / (45 * (left + right)))
+
+print(barbell_centroid(0, 10))
         
