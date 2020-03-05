@@ -1,26 +1,28 @@
-from graphics import *
+from tkinter import *
+import math
+import time
 
 width = 500
 height = 500
+angle = 0
+tk = Tk()
+canvas = Canvas(tk, width = 500, height = 500)
+tk.title("Test")
+canvas.pack()
 
-def line(x1, y1, x2, y2):
-    return Line(Point(x1, y1), Point(x2, y2))
+class circle():
+    def __init__(self, center, radius, color):
+        self.radius = radius
+        self.shape = canvas.create_oval(center[0] - self.radius / 2, center[1] - self.radius / 2, center[0] + self.radius / 2, center[1] + self.radius / 2, fill = color)
+        self.coords = canvas.coords(self.shape)
+    
 
-def rect(x1, y1, x2, y2):
-    return Rectangle(Point(x1, y1), Point(x2, y2))
-
-def main():
-    win = GraphWin("New Window", width, height)
-    win.setBackground('black')
-
-    pt = Point(250, 250)
-    pt2 = Point(150, 250)
-    rect = Rectangle(Point(230, 100), Point(130, 200))
-    rect.setOutline('green')
-    rect.draw(win)
-
-    win.getMouse()
-    win.close()
+ball = circle((width / 2, height / 2), 100, "red")
 
 
-main()
+for i in range(100):
+    ball.coords = [ball.coords[0] - 10, ball.coords[1] - 10, ball.coords[2] - 10, ball.coords[3] - 10]
+    tk.update()
+    time.sleep(0.01)
+
+tk.mainloop()
