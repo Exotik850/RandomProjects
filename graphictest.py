@@ -21,7 +21,7 @@ ball = circle((width / 2, height / 2), 100, "red")
 
 
 for i in range(100):
-    ball.coords = [ball.coords[0] - 10, ball.coords[1] - 10, ball.coords[2] - 10, ball.coords[3] - 10]
+    canvas.move(ball, 1, 0)
     tk.update()
     time.sleep(0.01)
 
