@@ -17,4 +17,7 @@ def barbell_centroid(left, right):
 def cramers_rule(A, b):
     return "Error" if len(b) != len(A) else [[b[i] * A[i][j] for j in range(len(b))] for i in range(len(A))]
 
+def is_barbell_stable(left, right):
+    return False if barbell_centroid(left, right) < -25 or barbell_centroid(left, right) > 25 else True
+
         
