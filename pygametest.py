@@ -18,8 +18,6 @@ screen = pygame.display.set_mode((width, height))
 pygame.display.set_caption("Test")
 clock = pygame.time.Clock()
 
-
-
 running = True
 
 while running:
