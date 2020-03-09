@@ -1,7 +1,7 @@
 import yagmail
 from time import sleep
 
-class SpamMail():
+class SpamMail:
     def __init__(self):
         self.email = 'iamabotforme@gmail.com'
         self.password = 'ThisIsAPassword'
@@ -17,8 +17,8 @@ class SpamMail():
             sleep(1)
 
 if __name__ == '__main__':
-    SpamMail.__init__(SpamMail)
-    SpamMail.Spam(SpamMail, 150, 'brindha.kottu@gmail.com' )
+    SpamMail.__init__()
+    SpamMail.Spam(150, 'brindha.kottu@gmail.com' )
 
 
 
