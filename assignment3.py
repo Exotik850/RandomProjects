@@ -1,5 +1,4 @@
 import math
-import numpy as np
 
 pi = math.pi
 
@@ -17,7 +16,8 @@ def barbell_centroid(left, right):
 
 def cramers_rule(A, b):
     #return "Error" if len(b) != len(A) else [[b[i] * A[i][j] for j in range(len(b))] for i in range(len(A))]
-    return "Error" if len(b) != len(A) else np.linalg.solve(np.array(A), np.array(b))
+    #return "Error" if len(b) != len(A) else np.linalg.solve(np.array(A), np.array(b))
+    return "Error" if len(b) != len(A) else 
 
 def is_barbell_stable(left, right):
     return False if barbell_centroid(left, right) < -25 or barbell_centroid(left, right) > 25 else True
