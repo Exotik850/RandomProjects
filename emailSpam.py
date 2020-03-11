@@ -1,7 +1,6 @@
 import yagmail
 from time import sleep
-import concurrent.futures
-
+import time
 class SpamMail:
     def __init__(self):
         self.email = 'iamabotforme@gmail.com'
@@ -11,20 +10,22 @@ class SpamMail:
     def Spam(self, count, email):
         for i in range(int(count)):
             try:
-                with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
-                    executor.map(self.yag.send(email, str(i), "Hahaha I've sent you this " + str(i) + " times before!"), email)
+                self.yag.send(email, str(i), "Hahaha I've sent you this " + str(i) + " times before!")
+            except KeyboardInterrupt:
+                print("Process Terminated")
+                break
             except:
                 print("Error occurred")
             else:            
                 print("Email number " + str(i) + " sent.")
-            sleep(0.1)
-    
-    
+            sleep(0.3)
 if __name__ == '__main__':
     count = input("How many emails: ")
-    email = [input("Email: ")] * 5
+    email = input("Email: ")
+    startTime = time.time()
     sm = SpamMail()
     sm.Spam(count, email)
+    print(f"Done in {round(time.time() - startTime, 2)} second(s)")
 
 
 
