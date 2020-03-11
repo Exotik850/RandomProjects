@@ -13,7 +13,7 @@ class SpamMail:
     def Spam(self, count, email):
         for i in range(int(count)):
             try:
-                self.yag.send(email, str(i), "Hahaha I've sent you this " + str(i) + " times before!")
+                self.yag.send(email, str(i + 1), "Hahaha I've sent you this " + str(i) + " times before!")
             except:
                 print("Error Occured")
             else:
@@ -23,10 +23,10 @@ class SpamMail:
 if __name__ == '__main__':
     count = input("How many emails: ")
     email = input("Email: ")
-    startTime = time.time()
+    startTime = time.perf_counter()
     sm = SpamMail()
 
-    timeTaken = time.time() - startTime
+    timeTaken = time.perf_counter() - startTime
     print(f"Done in {timeTaken} second(s)")
     
         
