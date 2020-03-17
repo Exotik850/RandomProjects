@@ -14,10 +14,8 @@ def find_line(a, b):
 def barbell_centroid(left, right):
     return "Error" if left > 10 or right > 10 else ((sum([(45 * ((-2 * i - 1) - 25)) for i in range(0, left)]) + sum([(45 * ((2 * i + 1) + 25)) for i in range(0, right)])) / ((left + right) * 45))
 
-def cramers_rule(A, b):
-    #return "Error" if len(b) != len(A) else [[b[i] * A[i][j] for j in range(len(b))] for i in range(len(A))]
-    #return "Error" if len(b) != len(A) else np.linalg.solve(np.array(A), np.array(b))
-    return "Error" if len(b) != len(A) else 
-
 def is_barbell_stable(left, right):
     return False if barbell_centroid(left, right) < -25 or barbell_centroid(left, right) > 25 else True
+
+def cramers_rule(A, b):
+    return "Error" if len(b) != len(A) else (((b[0] * A[1][1]) - (A[0][1] * b[1])) / ((A[0][0] * A[1][1]) - (A[0][1] * A[1][0]))), (((A[0][0] * b[1]) - (b[0] * A[1][0])) / ((A[0][0] * A[1][1]) - (A[0][1] * A[1][0])))

@@ -12,7 +12,7 @@ def isPrime(num):
 
 def isPerfSquare(num):
     perfSquare = math.sqrt(num / 2)
-    return (perfSquare == (int(perfSquare)))
+    return (perfSquare == round(perfSquare))
 
 
 def main():
