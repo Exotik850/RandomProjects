@@ -22,3 +22,17 @@ def hanoi(num, frompl, via, dest):
         hanoi(num-1, frompl, dest, via)
         move(frompl, dest)
         hanoi(num-1, via, frompl, dest)
+
+#Minimum number of boxes can be put into a set width and height
+def areaTiles(w, h):
+    if w == 0 or h == 0:
+        return 0
+    elif w % 2 == 0 and h % 2 == 0:
+        return areaTiles(int(w / 2), int(h / 2))
+    elif w % 2 == 0 and h % 2 == 1:
+        return w + areaTiles(int(w / 2), int(h / 2))
+    elif w % 2 == 1 and h % 2 == 0:
+        return h + areaTiles(int(w / 2), int(h / 2))
+    else:
+        return w + (h - 1) + areaTiles(int(w / 2), int(h / 2))
+

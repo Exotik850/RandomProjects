@@ -1,13 +1,18 @@
 import math
+import time
+from functools import lru_cache
 #n != 2k**2 + p
-def isPrime(num):
-    if num == 1 or num == 0:
+
+def isPrime(n):
+    if n == 0 or n == 1:
         return False
-    if num == 2:
+    if n == 2:
         return True
-    for i in range(2, num//2):
-        if (num % i) == 0:
+    d = 3
+    while d * d <= n:
+        if n % d == 0:
             return False
+        d += 2
     return True
 
 def isPerfSquare(num):
@@ -17,25 +22,25 @@ def isPerfSquare(num):
 
 def main():
     n = 1
-    found = True
-    primes = list(filter(lambda num: num != 0, [(i * isPrime(i)) for i in range(10000)]))
+    found = False
+    primes = list(filter(lambda num: num != 0, [(i * isPrime(i)) for i in range(100000000000)]))
         
+    startTime = time.time()
     while not found:
         n += 2
 
-        if (n % 2) == 0:
-            print (f"It is not {n}")
+        if isPrime(n):
             continue
 
         i = 0
         found = True
-        while primes[i] <= n:
+        while n >= primes[i]:
             if isPerfSquare(n - primes[i]):
-                print (f"It is not {n}")
                 found = False
                 break
             i += 1
-    print(n)
+    print(f"It is {n}")
+    print(f"Done in {round(time.time() - startTime, 2)} second(s)")
 
 if __name__ == '__main__':
     main()
