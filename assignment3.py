@@ -19,3 +19,4 @@ def is_barbell_stable(left, right):
 
 def cramers_rule(A, b):
     return "Error" if len(b) != len(A) else (((b[0] * A[1][1]) - (A[0][1] * b[1])) / ((A[0][0] * A[1][1]) - (A[0][1] * A[1][0]))), (((A[0][0] * b[1]) - (b[0] * A[1][0])) / ((A[0][0] * A[1][1]) - (A[0][1] * A[1][0])))
+
