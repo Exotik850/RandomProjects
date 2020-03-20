@@ -23,7 +23,7 @@ def isPerfSquare(num):
 def main():
     n = 1
     found = False
-    primes = list(filter(lambda num: num != 0, [(i * isPrime(i)) for i in range(100000000000)]))
+    primes = list(filter(lambda num: num != 0, [(i * isPrime(i)) for i in range(6000)]))
         
     startTime = time.time()
     while not found:

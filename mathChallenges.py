@@ -8,10 +8,10 @@ def fibonacci(n):
     elif n == 2:
         return 1
     elif n > 2:
-        return fibonacci(n-1) + fibonacci(n - 2)
+        return fibonacci(n - 1) + fibonacci(n - 2)
 
 #Towers of Hanoi
-output = open("hanoiForXDiscs.txt", "w")
+output = open("fibonacci.txt", "w")
 def move(frompl, dest):
     output.write(f"Move {frompl} to {dest} \n")
 
@@ -34,5 +34,5 @@ def areaTiles(w, h):
     elif w % 2 == 1 and h % 2 == 0:
         return h + areaTiles(int(w / 2), int(h / 2))
     else:
-        return w + (h - 1) + areaTiles(int(w / 2), int(h / 2))
+        return w + (h - 1) + areaTiles(int(w / 2), int(h / 2)
 
