@@ -1,5 +1,5 @@
 from functools import lru_cache
-
+import time
 #Fibonacci Sequence
 @lru_cache(maxsize = 1000)
 def fibonacci(n):
@@ -11,9 +11,10 @@ def fibonacci(n):
         return fibonacci(n - 1) + fibonacci(n - 2)
 
 #Towers of Hanoi
-output = open("fibonacci.txt", "w")
+# output = open("fibonacci.txt", "w")
 def move(frompl, dest):
-    output.write(f"Move {frompl} to {dest} \n")
+    # output.write(f"Move {frompl} to {dest} \n")
+    print(f"Move {frompl} to {dest}")
 
 def hanoi(num, frompl, via, dest):
     if num == 0:
@@ -34,5 +35,4 @@ def areaTiles(w, h):
     elif w % 2 == 1 and h % 2 == 0:
         return h + areaTiles(int(w / 2), int(h / 2))
     else:
-        return w + (h - 1) + areaTiles(int(w / 2), int(h / 2)
-
+        return w + (h - 1) + areaTiles(int(w / 2), int(h / 2))
