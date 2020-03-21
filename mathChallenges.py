@@ -1,5 +1,6 @@
 from functools import lru_cache
 import time
+
 #Fibonacci Sequence
 @lru_cache(maxsize = 1000)
 def fibonacci(n):

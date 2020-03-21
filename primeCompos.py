@@ -19,13 +19,13 @@ def isPerfSquare(num):
     perfSquare = math.sqrt(num / 2)
     return (perfSquare == round(perfSquare))
 
-
+@lru_cache(maxsize=1000)
 def main():
     n = 1
     found = False
-    primes = list(filter(lambda num: num != 0, [(i * isPrime(i)) for i in range(6000)]))
         
     startTime = time.time()
+    primes = list(filter(lambda num: num != 0, [(i * isPrime(i)) for i in range(6000)]))   
     while not found:
         n += 2
 
