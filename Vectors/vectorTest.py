@@ -1,6 +1,5 @@
 from Vectors import Vector
 import math
+import random
 
-testv = Vector(10, -10)
 
-print(testv.mag())

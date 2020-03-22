@@ -15,7 +15,7 @@ def fibonacci(n):
 # output = open("fibonacci.txt", "w")
 def move(frompl, dest):
     # output.write(f"Move {frompl} to {dest} \n")
-    print(f"Move {frompl} to {dest}")
+    print(f"Move {frompl} to {dest} \n")
 
 def hanoi(num, frompl, via, dest):
     if num == 0:
@@ -37,3 +37,5 @@ def areaTiles(w, h):
         return h + areaTiles(int(w / 2), int(h / 2))
     else:
         return w + (h - 1) + areaTiles(int(w / 2), int(h / 2))
+
+print(fibonacci(1000))
