@@ -13,13 +13,26 @@ class Vector:
 
     def __add__(self, som):
         try:
-            tempv = Vector(0, 0)
-            tempv.x = self.x + som.x
-            tempv.y = self.y + som.y
-            return tempv 
+            self.x = self.x + som.x
+            self.y = self.y + som.y
+            return self
         except:
             return Vector(self.x + som, self.y + som)
     
+    def __sub__(self, som):
+        try:
+            self.x = self.x - som.x
+            self.y = self.y - som.y
+            return self
+        except:
+            return Vector(self.x - som, self.y - som)
+
+    def div(self, som):
+        temp = self
+        temp.x = temp.x / som
+        temp.y = temp.y / som
+        return temp
+        
     def __iadd__(self, som):
         try:
             tempv = Vector(0, 0)
@@ -29,14 +42,10 @@ class Vector:
         except:
             return Vector(self.x + som, self.y + som)
 
-    def mult(self, num):
-        try:
-            tempv = Vector(0, 0)
-            tempv.x = self.x * num.x
-            tempv.y = self.y * num.y
-            return tempv 
-        except:
-            return Vector(self.x * num, self.y * num)
+    def __mul__(self, num):
+        self.x *= num
+        self.y *= num
+        return self
 
     def __str__(self):
         return f'{self.x}, {self.y}'
@@ -45,18 +54,19 @@ class Vector:
         return f'{self.x}, {self.y}'
 
     def rotate(self, r):
-        temp = self
-        r *= math.pi / 180
-        self.x = round(math.cos(temp.x * r) - math.sin(temp.y * r), 3)
-        self.y = round(math.sin(temp.x * r) + math.cos(temp.y * r), 3)
-        self.heading = math.atan2(self.y, self.x)
-
-    def add(self, vector):
-        self.x += vector.x
-        self.y += vector.y
-        
+        newH = self.heading + r
+        # if newH == newH * (180 / math.pi):
+        mag = self.mag()
+        self.x = math.cos(newH) * mag
+        self.y = math.sin(newH) * mag
+        self.heading = newH
+        return self
+   
     def dot(self, vector):
         return ((self.x * vector.x) + (self.y * vector.y))
+
+    def cross(self, other):
+        return (self.x * other.y - self.y * other.x)
 
     def mag(self):
         return math.sqrt(self.x * self.x + self.y * self.y)
@@ -64,8 +74,24 @@ class Vector:
     def magSq(self):
         return (self.x * self.x + self.y * self.y)
 
-    def cross(self, other):
-        return (self.x * other.y - self.y * other.x)
+    def setMag(self, n):
+        return self.normalize() * n
+
+    def limit(self, n):
+        mag = self.mag()
+        if mag > n:
+            self.setMag(n)
+            return self
+        else:
+            return self
+
+    def normalize(self):
+        m = self.mag()
+        if not (m == 0):
+            self = self.div(m)
+            return self
+        else:
+            return 0
 
     @staticmethod
     def random2D():
