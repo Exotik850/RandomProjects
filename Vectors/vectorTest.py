@@ -1,7 +1,7 @@
 from Vectors import Vector
 import math
-import random
 
-testv = Vector(3, 4)
-testv.setMag(10)
+testv = Vector(20, 20)
+testv.setMag(10 * math.sqrt(2))
 print(testv)
+
